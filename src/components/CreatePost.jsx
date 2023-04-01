@@ -6,6 +6,16 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 const postEndPoint = BASE_URL + `/posts`;
 
+const authToken = window.localStorage.getItem("token");
+
+// //, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${authToken}`,
+//     },
+
+console.log(authToken);
 const CreatePost = () => {
   const fetchPost = async () => {
     try {
@@ -19,6 +29,8 @@ const CreatePost = () => {
     }
   };
   fetchPost();
+
+  return <div>Where are the post?</div>;
 };
 
 export default CreatePost;
