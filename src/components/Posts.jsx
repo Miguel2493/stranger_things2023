@@ -33,25 +33,20 @@ const fetchPost = async () => {
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  console.log("posts: ", posts);
 
   useEffect(() => {
     const allPosts = async () => {
-      const postsReceived = await fetchPost();
-      const postsArray = postsReceived.data.posts;
-      console.log(postsArray);
-      postsArray.map((post, index) => {
-        if (post) {
-          const firstPost = post[0];
-          console.log(firstPost);
-          return firstPost;
-        }
-      });
+      const postsFetched = await fetchPost();
+      const postsArray = postsFetched.data.posts;
+      console.log(postsArray); // we fetched an array of posts
       setPosts(postsArray);
     };
     allPosts();
   }, []);
-  const firstPostDescription = posts[0];
-  console.log(firstPostDescription);
+
+  // const firstPostDescription = posts[0];
+  // console.log(firstPostDescription);
 
   //  singlePost();
 
@@ -63,7 +58,13 @@ const Posts = () => {
 
   return (
     <>
-      <div>Where are the post?</div>
+      <header>Where are the post?</header>
+      {posts.map((post, index) => (
+        <div key={index}>
+          <h1>{post.title}</h1>
+          <div>{post.description}</div>
+        </div>
+      ))}
     </>
   );
 };
