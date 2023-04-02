@@ -58,11 +58,12 @@ const Posts = () => {
 
   return (
     <>
-      <header>Where are the post?</header>
+      <h1>Where are the post?</h1>
       {posts.map((post, index) => (
         <div key={index}>
-          <h1>{post.title}</h1>
+          <h2>{post.title}</h2>
           <div>{post.description}</div>
+          <div>{post.price}</div>
         </div>
       ))}
     </>
