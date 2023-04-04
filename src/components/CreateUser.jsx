@@ -17,25 +17,24 @@ const CreateUser = () => {
       password,
     };
 
-    // const verifyLogIn = postEndPoint;
-    // fetch(verifyLogIn, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     user: {
-    //       username: "",
-    //       password: "",
-    //     },
-    //   }),
-    // })
-    //   .then((res) => {
-    //     console.log("This is the login response", res, res.json);
-    //     return res.json();
-    //   })
-    //   .catch(console.error);
+    const verifyLogIn = postEndPoint;
+    fetch(verifyLogIn, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user: userLogIn }),
+    })
+      .then((res) => {
+        console.log("This is the login response", res, res.json);
+        return res.json();
+      })
+      .catch(console.error);
   };
+
+  const updateUserName = (event) => setUserName(event.target.value);
+  const updatePassword = (event) => setPassword(event.target.value);
+
   return (
     <>
       <h1>We Are Creating Users!!</h1>
@@ -43,11 +42,11 @@ const CreateUser = () => {
       <form onSubmit={onFormSubmit}>
         <label>
           New Username:
-          <input type="text" value={username} onChange={setUserName}></input>
+          <input type="text" value={username} onChange={updateUserName}></input>
         </label>
         <label>
           New Password:
-          <input type="text" value={password} onChange={setPassword}></input>
+          <input type="text" value={password} onChange={updatePassword}></input>
         </label>
         <button type="submit">Submit User</button>
       </form>
